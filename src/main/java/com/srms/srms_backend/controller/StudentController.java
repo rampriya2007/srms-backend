@@ -29,4 +29,22 @@ public class StudentController {
     public Student getStudentById(@PathVariable Long id) {
         return studentRepository.findById(id).orElse(null);
     }
+@PutMapping("/{id}")
+public Student updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+    Student existing = studentRepository.findById(id).orElse(null);
+    if (existing == null) return null;
+    
+    existing.setName(updatedStudent.getName());
+    existing.setRollNumber(updatedStudent.getRollNumber());
+    existing.setDepartment(updatedStudent.getDepartment());
+    existing.setYear(updatedStudent.getYear());
+    
+    return studentRepository.save(existing);
+}
+
+@DeleteMapping("/{id}")
+public String deleteStudent(@PathVariable Long id) {
+    studentRepository.deleteById(id);
+    return "Student deleted successfully";
+}
 }
