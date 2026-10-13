@@ -38,7 +38,7 @@ public class Marks {
     public void setMarksObtained(int marksObtained) {
         this.marksObtained = marksObtained;
         this.grade = calculateGrade(marksObtained);
-        this.result = marksObtained >= 50 ? "Pass" : "Fail";
+        this.result = marksObtained >= 30 ? "Pass" : "Fail";
     }
 
     public String getGrade() { return grade; }
@@ -46,10 +46,12 @@ public class Marks {
 
     private String calculateGrade(int marks) {
         if (marks >= 90) return "A+";
-        else if (marks >= 80) return "A";
-        else if (marks >= 70) return "B";
-        else if (marks >= 60) return "C";
-        else if (marks >= 50) return "D";
+        else if (marks >= 80) return "O";
+        else if (marks >= 70) return "A";
+        else if (marks >= 60) return "B";
+        else if (marks >= 50) return "C";
+        else if(marks >=40) return "D";
+        else if(marks >=30) return "E";
         else return "F";
     }
 }
